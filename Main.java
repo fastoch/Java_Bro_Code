@@ -1,9 +1,9 @@
 public class Main {
 
   public static void main(String[] args) {
-  
-    Garage garage = new Garage();
-    Car car = new Car("BMW");
-    garage.park(car);
+    
+    Friend friend = new Friend("Monica");
+    Friend friend2 = new Friend("Joey");
+    System.out.println(Friend.numberOfFriends);
   }
 }
