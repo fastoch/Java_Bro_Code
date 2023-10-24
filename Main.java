@@ -2,10 +2,11 @@ public class Main {
 
   public static void main(String[] args) {
     
-    Animal animal = new Animal();
-    animal.speak();
-
-    Dog dog = new Dog();
-    dog.speak();
+    Hero hero = new Hero("Batman", 32, "$$$");
+    System.out.println(hero.name);
+    System.out.println(hero.age);
+    System.out.println(hero.power);
+    System.out.println();
+    System.out.println(hero.toString()); 
   }
 }
