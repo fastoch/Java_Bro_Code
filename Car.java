@@ -1,7 +1,8 @@
-public class Car extends Vehicle {
+public class Car {
 
-  void go() {
-    System.out.println("Car is moving");
+  String name;
+
+  Car(String name) {
+    this.name = name;
   }
-  
 }
