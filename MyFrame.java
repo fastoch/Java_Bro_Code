@@ -1,39 +1,36 @@
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MyFrame extends JFrame {
+public class MyFrame extends JFrame implements ActionListener {
 
-  JButton button; // make button accessible from the constructor
-  JLabel label; // make label accessible from the constructor
+  JButton button; // global variable
+  JTextField textField; // global variable
 
   MyFrame() {
-
-    ImageIcon icon = new ImageIcon("point.png");
-    ImageIcon icon2 = new ImageIcon("smiley.png");
-
-    label = new JLabel();
-    label.setIcon(icon2);
-    label.setBounds(300, 300, 300, 300);
-    label.setVisible(false); // not visible initially
-
-    button = new JButton("Click Me");
-    button.setFont(new Font("Monospace", Font.BOLD, 20));
-    button.setBounds(300, 200, 250, 100);
-    button.addActionListener(e -> label.setVisible(true));
-    button.setFocusable(false); // removes the box around the text field
-    button.setIcon(icon);
-    button.setHorizontalTextPosition(JButton.LEFT);
-    button.setForeground(Color.darkGray);
-
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.setLayout(null);
-    this.setSize(800, 800);
-    this.setVisible(true);
+    this.setLayout(new FlowLayout());
+
+    button = new JButton("Submit");
+    button.addActionListener(this);
+
+    textField = new JTextField();
+    textField.setPreferredSize(new Dimension(250, 40));
+
     this.add(button);
-    this.add(label); // add label to the frame
+    this.add(textField);
+    this.pack(); // Frame size adjusts to fit the components you add
+    this.setVisible(true);
+  }
+
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    if(e.getSource()==button) {
+      System.out.println("You typed: " + textField.getText());
+    }
   }
 }
