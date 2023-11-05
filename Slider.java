@@ -20,22 +20,26 @@ public class Slider implements ChangeListener {
     frame = new JFrame("Slider demo");
     panel = new JPanel();
     label = new JLabel();
-    slider = new JSlider(0, 100, 25); // min, max, starting point
+    slider = new JSlider(0, 100, 50); // min, max, starting point
 
-    slider.setPreferredSize(new Dimension(400,300)); // width, height
+    slider.setPreferredSize(new Dimension(400,400)); // width, height
     slider.setPaintTicks(true); // paint graduations
     slider.setMinorTickSpacing(5); // spacing between minor graduations
     slider.setMajorTickSpacing(25);
     slider.setPaintLabels(true); // add values to major ticks
     slider.setPaintTrack(true);
     slider.setFont(new Font("Console", Font.PLAIN, 16));
+    slider.setOrientation(SwingConstants.VERTICAL);
+    
+    label.setText(slider.getValue() + "°C");
+    label.setFont(new Font("Console", Font.PLAIN, 28));
 
-    slider.setOrientation(SwingConstants.VERTICAL); 
-
+    slider.addChangeListener(this);
     panel.add(slider);
     panel.add(label);
     frame.add(panel);
-    frame.setSize(500,500);
+
+    frame.setSize(300,500);
     frame.setLocationRelativeTo(null);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
@@ -43,6 +47,6 @@ public class Slider implements ChangeListener {
 
   @Override
   public void stateChanged(ChangeEvent e) {
-
+    label.setText(slider.getValue() + "°C");
   }
 }
